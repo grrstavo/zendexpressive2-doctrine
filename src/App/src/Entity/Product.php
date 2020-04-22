@@ -15,20 +15,20 @@ class Product extends EntityAbstract
      * @ORM\Id
      * @ORM\GeneratedValue
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $name;
+    protected $name;
 
     /**
      * @ORM\Column(type="decimal", scale=2)
      */
-    private $price;
+    protected $price;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $description;
+    protected $description;
 }

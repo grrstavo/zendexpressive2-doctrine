@@ -8,7 +8,7 @@ abstract class EntityAbstract
     {
         $methodName = $this->toMethod($name, 'get');
         if (!method_exists($this, $methodName)) {
-            return $name ?? null;
+            return $this->$name ?? null;
         }
 
         return $this->$methodName();

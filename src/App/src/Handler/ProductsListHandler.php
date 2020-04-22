@@ -2,6 +2,7 @@
 
 namespace App\Handler;
 
+use App\Entity\Product;
 use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -22,6 +23,11 @@ class ProductsListHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        return new HtmlResponse($this->template->render('app::products/list'));
+        $product = new Product();
+
+        $repository = $this->entityManager->getRepository(Product::class);
+        $products = $repository->findAll();
+
+        return new HtmlResponse($this->template->render('app::products/list', ['products' => $products]));
     }
 }
